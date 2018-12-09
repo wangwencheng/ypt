@@ -38,8 +38,8 @@ public class ShopController {
             req.setStartAuctionCount(shopSearchRequest.getStartAuctionCount());
             req.setEndAuctionCount(shopSearchRequest.getEndAuctionCount());
             req.setPlatform(Objects.isNull(shopSearchRequest.getPlatform()) ? 2L : shopSearchRequest.getPlatform());
-            req.setPageNo(1L);
-            req.setPageSize(20L);
+            req.setPageNo(shopSearchRequest.getPageNo());
+            req.setPageSize(shopSearchRequest.getPageSize());
             TbkShopGetResponse rsp = yptClient.getClient().execute(req);
             return BaseResponse.success(rsp.getResults());
         }catch (ApiException e){
