@@ -1,0 +1,14 @@
+#spring:
+#  data:
+#    elasticsearch:
+#         cluster-nodes: 47.105.99.130:9300
+#         cluster-name: test-es
+server:
+  servlet:
+    context-path: /ypt
+
+youpintao:
+  adZoneId: 66968300266
+  url: http://gw.api.taobao.com/router/rest
+  appKey: 25256525
+  appSecret: 1f439c0212f0e7d69525edeb82a1ba93

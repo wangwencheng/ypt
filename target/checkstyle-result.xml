@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.6">
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\advice\ESRestControllerAdvice.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\base\BaseResponse.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\dao\GoodsRepository.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\entity\GoodsInfo.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\exception\ESException.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\util\config\AppConfig.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\util\JSONMapper.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\web\controller\CategoryController.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\web\controller\GoodsController.java">
+<error line="4" column="8" severity="warning" message="Unused import - com.example.ypt.dao.GoodsRepository." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="5" column="8" severity="warning" message="Unused import - com.example.ypt.entity.GoodsInfo." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="6" column="8" severity="warning" message="Unused import - org.springframework.beans.factory.annotation.Autowired." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="7" column="8" severity="warning" message="Unused import - org.springframework.web.bind.annotation.GetMapping." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="8" column="8" severity="warning" message="Unused import - org.springframework.web.bind.annotation.RestController." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="10" column="8" severity="warning" message="Unused import - java.util.Map." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="11" column="8" severity="warning" message="Unused import - java.util.TreeMap." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\web\controller\GoodsInfoController.java">
+<error line="31" column="76" severity="warning" message="Avoid inline conditionals." source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+<error line="32" column="76" severity="warning" message="Avoid inline conditionals." source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\web\request\GoodsInfoRequest.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\web\WebMvcConfig.java">
+</file>
+<file name="D:\IDEAWORKSPACE\ypt\src\main\java\com\example\ypt\YptApplication.java">
+<error line="6" column="1" severity="warning" message="Utility classes should not have a public or default constructor." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+</checkstyle>
