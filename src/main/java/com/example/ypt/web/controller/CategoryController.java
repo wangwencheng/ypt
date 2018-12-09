@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -23,17 +22,16 @@ public class CategoryController {
     @RequestMapping("info")
     public BaseResponse getCategory() {
         try {
-            List<String> catIds = Arrays.asList(categoryConfig.getCatIds().split(","));
-            List<String> catNames = Arrays.asList(categoryConfig.getCatNames().split(","));
+            String[] catIds = categoryConfig.getCatIds().split(",");
+            String[] catNames = categoryConfig.getCatNames().split(",");
             List<CategoryResponse> categoryList = new ArrayList<>(11);
-            catIds.forEach(catId -> {
-                catNames.forEach(catName -> {
-                    CategoryResponse categoryResponse = new CategoryResponse();
-                    categoryResponse.setCatId(Long.parseLong(catId));
-                    categoryResponse.setCatName(catName);
-                    categoryList.add(categoryResponse);
-                });
-            });
+            CategoryResponse categoryResponse=null;
+            for(int i=0;i<catIds.length;i++){
+                categoryResponse=new CategoryResponse();
+                categoryResponse.setCatId(Long.parseLong(catIds[i]));
+                categoryResponse.setCatName(catNames[i]);
+                categoryList.add(categoryResponse);
+            }
             return BaseResponse.success(categoryList);
         } catch (Exception e) {
             log.error("获取商品类目出错 ", e);
