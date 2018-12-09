@@ -29,10 +29,11 @@ public class GoodsInfoController {
 
     @RequestMapping("info")
     public BaseResponse getGoodsInfo(@RequestBody GoodsInfoRequest goodsInfoRequest) {
+        log.info("请求参数为，{}", JSONMapper.json(goodsInfoRequest));
         try {
             TbkDgItemCouponGetRequest req = new TbkDgItemCouponGetRequest();
             req.setAdzoneId(Objects.isNull(goodsInfoRequest.getAdZoneId()) ? appConfig.getAdZoneId() : goodsInfoRequest.getAdZoneId());
-            req.setPlatform(Objects.isNull(goodsInfoRequest.getPlatForm()) ? 2L : goodsInfoRequest.getPlatForm());
+            req.setPlatform(Objects.isNull(goodsInfoRequest.getPlatform()) ? 2L : goodsInfoRequest.getPlatform());
             req.setCat(goodsInfoRequest.getCat());
             req.setPageSize(goodsInfoRequest.getPageSize());
             req.setQ(goodsInfoRequest.getQ());
@@ -49,20 +50,21 @@ public class GoodsInfoController {
 
     @RequestMapping("search")
     public BaseResponse search(@RequestBody GoodsInfoRequest goodsInfoRequest) {
+        log.info("请求参数为，{}", JSONMapper.json(goodsInfoRequest));
         try {
             TbkItemGetRequest req = new TbkItemGetRequest();
             req.setFields("num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick");
             req.setQ(goodsInfoRequest.getQ());
             req.setCat(goodsInfoRequest.getCat());
             req.setItemloc(goodsInfoRequest.getItemloc());
-            req.setSort("tk_rate_des");
+            req.setSort(goodsInfoRequest.getSort());
             req.setIsTmall(Objects.isNull(goodsInfoRequest.getIsTmall()) ? false : goodsInfoRequest.getIsTmall());
             req.setIsOverseas(Objects.isNull(goodsInfoRequest.getIsOverseas()) ? false : goodsInfoRequest.getIsOverseas());
             req.setStartPrice(goodsInfoRequest.getStartPrice());
             req.setEndPrice(goodsInfoRequest.getEndPrice());
             req.setStartTkRate(goodsInfoRequest.getStartTkRate());
             req.setEndTkRate(goodsInfoRequest.getEndTkRate());
-            req.setPlatform(Objects.isNull(goodsInfoRequest.getPlatForm()) ? 2L : goodsInfoRequest.getPlatForm());
+            req.setPlatform(Objects.isNull(goodsInfoRequest.getPlatform()) ? 2L : goodsInfoRequest.getPlatform());
             req.setPageNo(goodsInfoRequest.getPageNo());
             req.setPageSize(goodsInfoRequest.getPageSize());
             TbkItemGetResponse rsp = yptClient.getClient().execute(req);

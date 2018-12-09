@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class GoodsInfoRequest {
     private Long adZoneId;
-    private Long platForm;
+    private Long platform;
     private String cat;
     private Long pageSize;
     private String q;
