@@ -35,9 +35,9 @@ public class GoodsInfoController {
             req.setAdzoneId(Objects.isNull(goodsInfoRequest.getAdZoneId()) ? appConfig.getAdZoneId() : goodsInfoRequest.getAdZoneId());
             req.setPlatform(Objects.isNull(goodsInfoRequest.getPlatform()) ? 2L : goodsInfoRequest.getPlatform());
             req.setCat(goodsInfoRequest.getCat());
-            req.setPageSize(goodsInfoRequest.getPageSize());
+            req.setPageSize(Objects.isNull(goodsInfoRequest.getPageSize()) ? 20L : goodsInfoRequest.getPageSize());
             req.setQ(goodsInfoRequest.getQ());
-            req.setPageNo(goodsInfoRequest.getPageNo());
+            req.setPageNo(Objects.isNull(goodsInfoRequest.getPageNo()) ? 1L : goodsInfoRequest.getPageNo());
             TbkDgItemCouponGetResponse rsp = yptClient.getClient().execute(req);
             rsp.getResults();
             log.info("返回的消息体为，{}", JSONMapper.json(rsp.getResults()));

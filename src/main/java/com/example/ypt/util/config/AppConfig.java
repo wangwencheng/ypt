@@ -15,4 +15,6 @@ public class AppConfig {
     private String appSelect;
     @Value("${youpintao.adZoneId}")
     private Long adZoneId;
+    @Value("${youpintao.siteId}")
+    private Long siteId;
 }
