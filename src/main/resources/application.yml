@@ -20,3 +20,12 @@ newuser:
   settleMonth: 201812
 
 authCodeUrl: http://my.open.taobao.com/auth/authorize.htm
+
+
+
+#喵有券开发平台
+myj:
+ url: https://api.open.21ds.cn/apiv1/getitemgyurl
+ apkey: 14eff147-3b4a-3af5-b1dc-27c043dc980c
+ pid: mm_126935412_43360697_66968300266
+ tbname: 喏风尘梦

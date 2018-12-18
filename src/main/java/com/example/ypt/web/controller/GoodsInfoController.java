@@ -4,6 +4,7 @@ import com.example.ypt.base.BaseResponse;
 import com.example.ypt.util.JSONMapper;
 import com.example.ypt.util.YptClient;
 import com.example.ypt.util.config.AppConfig;
+import com.example.ypt.util.config.MYJConfig;
 import com.example.ypt.web.request.GoodsInfoRequest;
 import com.taobao.api.ApiException;
 import com.taobao.api.request.TbkDgItemCouponGetRequest;
@@ -12,10 +13,13 @@ import com.taobao.api.response.TbkDgItemCouponGetResponse;
 import com.taobao.api.response.TbkItemGetResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
 import java.util.Objects;
 
 @RestController
@@ -26,6 +30,8 @@ public class GoodsInfoController {
     private AppConfig appConfig;
     @Autowired
     YptClient yptClient;
+    @Autowired
+    MYJConfig myjConfig;
 
     @RequestMapping("info")
     public BaseResponse getGoodsInfo(@RequestBody GoodsInfoRequest goodsInfoRequest) {
@@ -72,6 +78,21 @@ public class GoodsInfoController {
         } catch (ApiException e) {
             log.error("调用淘宝客商品查询API出错 ", e);
             return BaseResponse.error("调用淘宝客商品查询API出错");
+        }
+    }
+
+    @RequestMapping("QuanLink")
+    public BaseResponse getQuanLink(String itemId) {
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            String url = myjConfig.getUrl() + "?apkey=" + myjConfig.getApkey() + "&pid=" + myjConfig.getPid() + "&tbname=" + myjConfig.getTbname() + "&itemid=" + itemId;
+            ResponseEntity<Map> map = restTemplate.getForEntity(url, Map.class);
+            Map<String, Map> mapItem = map.getBody();
+            log.info("数据结构是", JSONMapper.json(mapItem.get("result").get("data")));
+            return BaseResponse.success(mapItem.get("result").get("data"));
+        } catch (Exception e) {
+            log.error("调用喵有劵API出错", e);
+            return BaseResponse.error("调用喵有劵API出错");
         }
     }
 }
