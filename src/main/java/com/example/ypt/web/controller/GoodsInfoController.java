@@ -82,10 +82,10 @@ public class GoodsInfoController {
     }
 
     @RequestMapping("QuanLink")
-    public BaseResponse getQuanLink(String itemId) {
+    public BaseResponse getQuanLink(@RequestBody GoodsInfoRequest request) {
         try {
             RestTemplate restTemplate = new RestTemplate();
-            String url = myjConfig.getUrl() + "?apkey=" + myjConfig.getApkey() + "&pid=" + myjConfig.getPid() + "&tbname=" + myjConfig.getTbname() + "&itemid=" + itemId;
+            String url = myjConfig.getUrl() + "?apkey=" + myjConfig.getApkey() + "&pid=" + myjConfig.getPid() + "&tbname=" + myjConfig.getTbname() + "&itemid=" + request.getItemId();
             ResponseEntity<Map> map = restTemplate.getForEntity(url, Map.class);
             Map<String, Map> mapItem = map.getBody();
             log.info("数据结构是", JSONMapper.json(mapItem.get("result").get("data")));

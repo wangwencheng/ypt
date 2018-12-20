@@ -21,4 +21,5 @@ public class GoodsInfoRequest {
     private String sort;
     private Long startPrice;
     private Long startTkRate;
+    private Long itemId;
 }
