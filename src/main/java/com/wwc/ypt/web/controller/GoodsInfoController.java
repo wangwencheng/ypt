@@ -1,5 +1,10 @@
 package com.wwc.ypt.web.controller;
 
+import com.taobao.api.ApiException;
+import com.taobao.api.request.TbkDgItemCouponGetRequest;
+import com.taobao.api.request.TbkItemGetRequest;
+import com.taobao.api.response.TbkDgItemCouponGetResponse;
+import com.taobao.api.response.TbkItemGetResponse;
 import com.wwc.ypt.base.BaseResponse;
 import com.wwc.ypt.exception.YPTException;
 import com.wwc.ypt.util.JSONMapper;
@@ -7,20 +12,16 @@ import com.wwc.ypt.util.YptClient;
 import com.wwc.ypt.util.config.AppConfig;
 import com.wwc.ypt.util.config.MYJConfig;
 import com.wwc.ypt.web.request.GoodsInfoRequest;
-import com.taobao.api.ApiException;
-import com.taobao.api.request.TbkDgItemCouponGetRequest;
-import com.taobao.api.request.TbkItemGetRequest;
-import com.taobao.api.response.TbkDgItemCouponGetResponse;
-import com.taobao.api.response.TbkItemGetResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Map;
+import java.util.*;
 import java.util.Objects;
 
 @RestController
@@ -46,9 +47,7 @@ public class GoodsInfoController {
             req.setQ(goodsInfoRequest.getQ());
             req.setPageNo(Objects.isNull(goodsInfoRequest.getPageNo()) ? 1L : goodsInfoRequest.getPageNo());
             TbkDgItemCouponGetResponse rsp = yptClient.getClient().execute(req);
-            rsp.getResults();
-            log.info("返回的消息体为，{}", JSONMapper.json(rsp.getResults()));
-            return BaseResponse.success("信息返回成功", rsp.getResults());
+            return CollectionUtils.isEmpty(rsp.getResults()) ? BaseResponse.error("调用好券商品API返回错误异常"):BaseResponse.success("信息返回成功", rsp.getResults());
         } catch (ApiException e) {
             log.error("调用好券商品API出错", e);
             throw new YPTException("调用好券商品API出错",e);
@@ -75,7 +74,7 @@ public class GoodsInfoController {
             req.setPageNo(goodsInfoRequest.getPageNo());
             req.setPageSize(goodsInfoRequest.getPageSize());
             TbkItemGetResponse rsp = yptClient.getClient().execute(req);
-            return BaseResponse.success(rsp.getResults());
+            return CollectionUtils.isEmpty(rsp.getResults()) ? BaseResponse.error("调用商品查询API返回错误异常"): BaseResponse.success(rsp.getResults());
         } catch (ApiException e) {
             log.error("调用淘宝客商品查询API出错 ", e);
             throw new YPTException("调用淘宝客商品查询API出错",e);
@@ -90,7 +89,7 @@ public class GoodsInfoController {
             ResponseEntity<Map> map = restTemplate.getForEntity(url, Map.class);
             Map<String, Map> mapItem = map.getBody();
             log.info("数据结构是", JSONMapper.json(mapItem.get("result").get("data")));
-            return BaseResponse.success(mapItem.get("result").get("data"));
+            return  BaseResponse.success(mapItem.get("result").get("data"));
         } catch (Exception e) {
             log.error("调用喵有劵API出错", e);
             throw new YPTException("调用喵有劵API出错",e);

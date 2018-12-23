@@ -9,6 +9,7 @@ import com.taobao.api.request.TbkShopRecommendGetRequest;
 import com.taobao.api.response.TbkShopRecommendGetResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,7 @@ public class RecommendController {
             req.setCount(recommendRequest.getCount());
             req.setPlatform(Objects.isNull(recommendRequest.getPlatform()) ? 2L : recommendRequest.getPlatform());
             TbkShopRecommendGetResponse rsp = yptClient.getClient().execute(req);
-            return BaseResponse.success(rsp.getResults());
+            return CollectionUtils.isEmpty(rsp.getResults()) ? BaseResponse.error("调用店铺关联查询API返回错误异常"): BaseResponse.success(rsp.getResults());
         } catch (ApiException e) {
             log.error("调用店铺关联推荐API出错", e);
             throw new YPTException("调用店铺关联推荐API出错",e);

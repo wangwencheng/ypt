@@ -1,16 +1,16 @@
 package com.wwc.ypt.web.controller;
 
+import com.taobao.api.ApiException;
+import com.taobao.api.request.TbkDgNewuserOrderSumRequest;
+import com.taobao.api.request.TbkScNewuserOrderSumRequest;
+import com.taobao.api.response.TbkDgNewuserOrderSumResponse;
+import com.taobao.api.response.TbkScNewuserOrderSumResponse;
 import com.wwc.ypt.base.BaseResponse;
 import com.wwc.ypt.exception.YPTException;
 import com.wwc.ypt.util.YptClient;
 import com.wwc.ypt.util.config.AppConfig;
 import com.wwc.ypt.util.config.CommonConfig;
 import com.wwc.ypt.web.request.NewUserRequest;
-import com.taobao.api.ApiException;
-import com.taobao.api.request.TbkDgNewuserOrderSumRequest;
-import com.taobao.api.request.TbkScNewuserOrderSumRequest;
-import com.taobao.api.response.TbkDgNewuserOrderSumResponse;
-import com.taobao.api.response.TbkScNewuserOrderSumResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,7 +59,7 @@ public class NewUserController {
             req.setActivityId(Objects.isNull(userRequest.getActivityId()) ? commonConfig.getActivityId() : userRequest.getActivityId());
             req.setSettleMonth(Objects.isNull(userRequest.getSettleMonth()) ? commonConfig.getSettleMonth() : userRequest.getSettleMonth());
             TbkDgNewuserOrderSumResponse rsp = yptClient.getClient().execute(req);
-            return BaseResponse.success(rsp.getResults());
+            return Objects.isNull(rsp.getResults()) ? BaseResponse.error("调用拉新导购API返回错误异常"): BaseResponse.success(rsp.getResults());
         } catch (ApiException e) {
             log.error("调用拉新导购API出错", e);
             throw new YPTException("调用拉新导购API出错",e);

@@ -1,13 +1,13 @@
 package com.wwc.ypt.web.controller;
 
+import com.taobao.api.ApiException;
+import com.taobao.api.request.JuItemsSearchRequest;
+import com.taobao.api.response.JuItemsSearchResponse;
 import com.wwc.ypt.base.BaseResponse;
 import com.wwc.ypt.exception.YPTException;
 import com.wwc.ypt.util.JuStatusEnum;
 import com.wwc.ypt.util.YptClient;
 import com.wwc.ypt.web.request.JuRequest;
-import com.taobao.api.ApiException;
-import com.taobao.api.request.JuItemsSearchRequest;
-import com.taobao.api.response.JuItemsSearchResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,16 +31,16 @@ public class JuController {
             obj1.setCurrentPage(juRequest.getPageNo());
             obj1.setPageSize(juRequest.getPageSize());
             obj1.setPid(juRequest.getPid());
-            obj1.setPostage(Objects.isNull(juRequest.getPostage())?true:juRequest.getPostage());
-            obj1.setStatus(Objects.isNull(juRequest.getStatus())? JuStatusEnum.hold.getStatus():juRequest.getStatus());
+            obj1.setPostage(Objects.isNull(juRequest.getPostage()) ? true : juRequest.getPostage());
+            obj1.setStatus(Objects.isNull(juRequest.getStatus()) ? JuStatusEnum.hold.getStatus() : juRequest.getStatus());
             obj1.setTaobaoCategoryId(juRequest.getCategoryId());
             obj1.setWord(juRequest.getWord());
             req.setParamTopItemQuery(obj1);
             JuItemsSearchResponse rsp = yptClient.getClient().execute(req);
-            return BaseResponse.success(rsp.getResult());
+            return  Objects.isNull(rsp.getResult()) ? BaseResponse.error("调用聚划算商品API返回错误异常") : BaseResponse.success(rsp.getResult());
         } catch (ApiException e) {
             log.error("调用聚划算商品API出错", e);
-            throw new YPTException("调用聚划算商品API出错",e);
+            throw new YPTException("调用聚划算商品API出错", e);
         }
     }
 }

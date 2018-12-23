@@ -8,12 +8,9 @@ import com.taobao.api.internal.mapping.ApiListField;
 import java.util.List;
 
 public class TbkItemGuessLikeResponse extends TaobaoResponse {
-    private static final long serialVersionUID = 1899513246334365447L;
     @ApiListField("results")
     @ApiField("tbk_item_coupon")
     private List<TbkItemGuessLikeResponse.TbkItemCoupon> results;
-    @ApiField("total_results")
-    private Long totalResults;
 
     public TbkItemGuessLikeResponse() {
     }
@@ -26,57 +23,49 @@ public class TbkItemGuessLikeResponse extends TaobaoResponse {
         return this.results;
     }
 
-    public void setTotalResults(Long totalResults) {
-        this.totalResults = totalResults;
-    }
-
-    public Long getTotalResults() {
-        return this.totalResults;
-    }
 
     public static class TbkItemCoupon extends TaobaoObject {
-        private static final long serialVersionUID = 7748159469356389817L;
+        @ApiField("num_iid")
+        private Long numIid;
+        @ApiField("title")
+        private String title;
+        @ApiField("pict_url")
+        private String pictUrl;
+        @ApiListField("small_images")
+        @ApiField("string")
+        private List<String> smallImages;
+        @ApiField("reserve_price")
+        private String reservePrice;
+        @ApiField("zk_final_price")
+        private String zkFinalPrice;
+        @ApiField("user_type")
+        private Long userType;
         @ApiField("category")
         private Long category;
+        @ApiField("volume")
+        private Long volume;
         @ApiField("commission_rate")
         private String commissionRate;
-        @ApiField("coupon_click_url")
-        private String couponClickUrl;
-        @ApiField("coupon_end_time")
-        private String couponEndTime;
+        @ApiField("item_url")
+        private String itemUrl;
+        @ApiField("shop_title")
+        private String shopTitle;
+        @ApiField("click_url")
+        private String clickUrl;
         @ApiField("coupon_info")
         private String couponInfo;
+        @ApiField("coupon_amount")
+        private String couponAmount;
+        @ApiField("coupon_total_count")
+        private Long couponTotalCount;
         @ApiField("coupon_remain_count")
         private Long couponRemainCount;
         @ApiField("coupon_start_time")
         private String couponStartTime;
-        @ApiField("coupon_total_count")
-        private Long couponTotalCount;
-        @ApiField("item_description")
-        private String itemDescription;
-        @ApiField("item_url")
-        private String itemUrl;
-        @ApiField("nick")
-        private String nick;
-        @ApiField("num_iid")
-        private Long numIid;
-        @ApiField("pict_url")
-        private String pictUrl;
-        @ApiField("seller_id")
-        private Long sellerId;
-        @ApiField("shop_title")
-        private String shopTitle;
-        @ApiListField("small_images")
-        @ApiField("string")
-        private List<String> smallImages;
-        @ApiField("title")
-        private String title;
-        @ApiField("user_type")
-        private Long userType;
-        @ApiField("volume")
-        private Long volume;
-        @ApiField("zk_final_price")
-        private String zkFinalPrice;
+        @ApiField("coupon_end_time")
+        private String couponEndTime;
+        @ApiField("coupon_click_url")
+        private String couponClickUrl;
 
         public TbkItemCoupon() {
         }
@@ -145,14 +134,6 @@ public class TbkItemGuessLikeResponse extends TaobaoResponse {
             this.couponTotalCount = couponTotalCount;
         }
 
-        public String getItemDescription() {
-            return this.itemDescription;
-        }
-
-        public void setItemDescription(String itemDescription) {
-            this.itemDescription = itemDescription;
-        }
-
         public String getItemUrl() {
             return this.itemUrl;
         }
@@ -161,13 +142,6 @@ public class TbkItemGuessLikeResponse extends TaobaoResponse {
             this.itemUrl = itemUrl;
         }
 
-        public String getNick() {
-            return this.nick;
-        }
-
-        public void setNick(String nick) {
-            this.nick = nick;
-        }
 
         public Long getNumIid() {
             return this.numIid;
@@ -185,13 +159,6 @@ public class TbkItemGuessLikeResponse extends TaobaoResponse {
             this.pictUrl = pictUrl;
         }
 
-        public Long getSellerId() {
-            return this.sellerId;
-        }
-
-        public void setSellerId(Long sellerId) {
-            this.sellerId = sellerId;
-        }
 
         public String getShopTitle() {
             return this.shopTitle;
@@ -239,6 +206,22 @@ public class TbkItemGuessLikeResponse extends TaobaoResponse {
 
         public void setZkFinalPrice(String zkFinalPrice) {
             this.zkFinalPrice = zkFinalPrice;
+        }
+
+        public String getClickUrl() {
+            return clickUrl;
+        }
+
+        public void setClickUrl(String clickUrl) {
+            this.clickUrl = clickUrl;
+        }
+
+        public String getCouponAmount() {
+            return couponAmount;
+        }
+
+        public void setCouponAmount(String couponAmount) {
+            this.couponAmount = couponAmount;
         }
     }
 }

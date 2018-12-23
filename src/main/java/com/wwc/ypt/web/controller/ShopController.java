@@ -9,6 +9,7 @@ import com.taobao.api.request.TbkShopGetRequest;
 import com.taobao.api.response.TbkShopGetResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +43,7 @@ public class ShopController {
             req.setPageNo(Objects.isNull(shopSearchRequest.getPageNo())?1L:shopSearchRequest.getPageNo());
             req.setPageSize(Objects.isNull(shopSearchRequest.getPageSize())?20L:shopSearchRequest.getPageSize());
             TbkShopGetResponse rsp = yptClient.getClient().execute(req);
-            return BaseResponse.success(rsp.getResults());
+            return CollectionUtils.isEmpty(rsp.getResults()) ? BaseResponse.error("调用好券店铺查询API返回错误异常"):BaseResponse.success(rsp.getResults());
         }catch (ApiException e){
             log.error("调用店铺搜索API出错", e);
             throw new YPTException("调用店铺搜索API出错",e);
