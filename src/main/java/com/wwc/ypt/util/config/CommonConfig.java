@@ -13,4 +13,6 @@ public class CommonConfig {
     private String settleMonth;
     @Value("${authCodeUrl}")
     private String authCodeUrl;
+    @Value("${shareCode}")
+    private String shareCode;
 }
