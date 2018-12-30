@@ -7,16 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("category")
 @Slf4j
+@RequestMapping("banner")
+@RestController
 public class BannerController {
     @Autowired
     BannerService bannerService;
 
-    public BaseResponse get() {
-        bannerService.get();
-        log.info("数据是，{}", bannerService.get());
-        return BaseResponse.success("");
+    @RequestMapping("info")
+    public BaseResponse getBannerData() {
+        return BaseResponse.success(bannerService.get());
     }
 }
