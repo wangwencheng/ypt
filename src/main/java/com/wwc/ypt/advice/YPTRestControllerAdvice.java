@@ -22,6 +22,9 @@ public class YPTRestControllerAdvice {
         } else if (e instanceof HttpMessageNotReadableException) {
             log.error("参数解析有问题了", e);
             return BaseResponse.error("没有入参,或者入参格式有问题");
+        }else if (e instanceof IllegalArgumentException) {
+            log.error("参数非法异常", e);
+            return BaseResponse.error("没有入参,或者入参格式有问题");
         }
         return BaseResponse.error(String.format("参数缺失[%s]", e.getMessage()));
     }
@@ -42,6 +45,11 @@ public class YPTRestControllerAdvice {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(YPTException.class)
     public BaseResponse customerException(YPTException e) {
+        return BaseResponse.error(Strings.isNullOrEmpty(e.getMessage()) ? "系统自定义异常，请联系管理员" : e.getMessage());
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler(Exception.class)
+    public BaseResponse Exception(YPTException e) {
         return BaseResponse.error(Strings.isNullOrEmpty(e.getMessage()) ? "系统自定义异常，请联系管理员" : e.getMessage());
     }
 }
