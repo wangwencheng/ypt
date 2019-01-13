@@ -39,6 +39,7 @@ public class YPTRestControllerAdvice {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(Throwable.class)
     public BaseResponse exception(Throwable e) {
+        log.error("错误异常信息为，{}",e);
         return BaseResponse.error("服务器开小差，请稍后再试");
     }
 
