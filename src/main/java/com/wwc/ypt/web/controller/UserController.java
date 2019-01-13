@@ -5,7 +5,6 @@ import com.wwc.ypt.base.BaseResponse;
 import com.wwc.ypt.entity.User;
 import com.wwc.ypt.exception.YPTException;
 import com.wwc.ypt.service.UserService;
-import com.wwc.ypt.util.MD5;
 import com.wwc.ypt.web.request.UserRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class UserController {
         if (Objects.isNull(user)) {
             throw new YPTException("用户名不存在");
         }
-        if (!MD5.toMD5(userRequest.getPassword()).equals(user.getPassword())) {
+        if (!userRequest.getPassword().equals(user.getPassword())) {
             throw new YPTException("用户密码错误请重新输入");
         }
         return BaseResponse.success("登陆成功");
