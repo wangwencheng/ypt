@@ -2,10 +2,7 @@ package com.wwc.ypt.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -13,7 +10,7 @@ import java.util.Date;
 @Entity
 public class FeedBack {
     @Id
-    @Column(name = "userId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String userId;
     @Column(name = "userName", nullable = false)
     private String userName;

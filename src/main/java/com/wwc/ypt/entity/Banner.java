@@ -9,7 +9,7 @@ import java.sql.Date;
 @Table(name = "banner")
 @Entity
 public class Banner {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
     @Column(name = "url", nullable = false)

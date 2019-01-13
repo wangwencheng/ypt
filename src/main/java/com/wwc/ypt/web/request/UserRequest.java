@@ -2,6 +2,8 @@ package com.wwc.ypt.web.request;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class UserRequest {
     private Long userId;
@@ -15,5 +17,5 @@ public class UserRequest {
     private String userSex;
     private String nickName;
     private String lastLoginIp;
-    private String userBirthday;
+    private Date userBirthday;
 }

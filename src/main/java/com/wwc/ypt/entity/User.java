@@ -3,12 +3,13 @@ package com.wwc.ypt.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
-@Table(name = "banner")
+@Table(name = "user")
 @Entity
 public class User {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long userId;
     @Column(name = "phone", nullable = false)
@@ -31,6 +32,6 @@ public class User {
     private String nickName;
     @Column(name = "last_login_ip", nullable = false)
     private String lastLoginIp;
-    @Column(name = "user_birthday", nullable = false)
-    private String userBirthday;
+    @Column(name = "user_birthday")
+    private Date userBirthday;
 }

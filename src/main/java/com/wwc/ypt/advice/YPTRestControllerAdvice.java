@@ -47,9 +47,4 @@ public class YPTRestControllerAdvice {
     public BaseResponse customerException(YPTException e) {
         return BaseResponse.error(Strings.isNullOrEmpty(e.getMessage()) ? "系统自定义异常，请联系管理员" : e.getMessage());
     }
-    @ResponseStatus(HttpStatus.OK)
-    @ExceptionHandler(Exception.class)
-    public BaseResponse Exception(YPTException e) {
-        return BaseResponse.error(Strings.isNullOrEmpty(e.getMessage()) ? "系统自定义异常，请联系管理员" : e.getMessage());
-    }
 }
