@@ -1,4 +1,4 @@
-package com.wwc.ypt.util;
+package com.wwc.ypt.utils.constants;
 
 public enum JuStatusEnum {
     hold(1L, "正在进行中"),

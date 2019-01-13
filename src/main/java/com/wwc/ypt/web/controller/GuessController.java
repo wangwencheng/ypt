@@ -2,10 +2,10 @@ package com.wwc.ypt.web.controller;
 
 
 import com.taobao.api.ApiException;
-import com.wwc.ypt.base.BaseResponse;
+import com.wwc.ypt.web.base.BaseResponse;
 import com.wwc.ypt.exception.YPTException;
-import com.wwc.ypt.util.YptClient;
-import com.wwc.ypt.util.config.AppConfig;
+import com.wwc.ypt.utils.YptClient;
+import com.wwc.ypt.utils.config.AppConfig;
 import com.wwc.ypt.web.request.TbkItemGuessLikeRequest;
 import com.wwc.ypt.web.response.TbkItemGuessLikeResponse;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.wwc.ypt.util;
+package com.wwc.ypt.utils;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

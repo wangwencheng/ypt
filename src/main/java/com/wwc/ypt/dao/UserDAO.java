@@ -3,7 +3,6 @@ package com.wwc.ypt.dao;
 import com.wwc.ypt.entity.User;
 import com.wwc.ypt.jpa.persistence.JPAAccess;
 import com.wwc.ypt.jpa.persistence.QueryBuilder;
-import com.wwc.ypt.util.MD5;
 import com.wwc.ypt.web.request.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +22,17 @@ public class UserDAO {
         String hql = "from User where phone=:phone";
         QueryBuilder query = QueryBuilder.create(hql).param("phone", userRequest.getPhone());
         return jpaAccess.findOne(query);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void modifyAvatar(UserRequest userRequest) {
+        String hql = "update User set userAvatar=:userAvatar where userId=:userId";
+        QueryBuilder query = QueryBuilder.create(hql).param("userAvatar", userRequest.getUserAvatar());
+        jpaAccess.update(query);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void modifyUserInfo(User user) {
+        jpaAccess.update(user);
     }
 }

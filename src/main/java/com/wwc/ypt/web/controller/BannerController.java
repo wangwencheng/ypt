@@ -1,6 +1,6 @@
 package com.wwc.ypt.web.controller;
 
-import com.wwc.ypt.base.BaseResponse;
+import com.wwc.ypt.web.base.BaseResponse;
 import com.wwc.ypt.service.BannerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

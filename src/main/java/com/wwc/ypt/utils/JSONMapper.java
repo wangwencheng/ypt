@@ -1,4 +1,4 @@
-package com.wwc.ypt.util;
+package com.wwc.ypt.utils;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonInclude;

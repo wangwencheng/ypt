@@ -1,4 +1,4 @@
-package com.wwc.ypt.util.config;
+package com.wwc.ypt.utils.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

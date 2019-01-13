@@ -1,4 +1,4 @@
-package com.wwc.ypt.util;
+package com.wwc.ypt.utils;
 
 /**
  * @author 王文城 wangwencheng

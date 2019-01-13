@@ -1,8 +1,8 @@
 package com.wwc.ypt.web.controller;
 
-import com.wwc.ypt.base.BaseResponse;
+import com.wwc.ypt.web.base.BaseResponse;
 import com.wwc.ypt.exception.YPTException;
-import com.wwc.ypt.util.YptClient;
+import com.wwc.ypt.utils.YptClient;
 import com.wwc.ypt.web.request.ShopSearchRequest;
 import com.taobao.api.ApiException;
 import com.taobao.api.request.TbkShopGetRequest;

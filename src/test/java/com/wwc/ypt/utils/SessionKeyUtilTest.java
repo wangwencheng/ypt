@@ -1,6 +1,6 @@
-package com.wwc.ypt.util;
+package com.wwc.ypt.utils;
 
-import com.wwc.ypt.util.config.CommonConfig;
+import com.wwc.ypt.utils.config.CommonConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

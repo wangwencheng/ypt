@@ -1,8 +1,8 @@
 package com.wwc.ypt.web.controller;
 
-import com.wwc.ypt.base.BaseResponse;
+import com.wwc.ypt.web.base.BaseResponse;
 import com.wwc.ypt.exception.YPTException;
-import com.wwc.ypt.util.config.CategoryConfig;
+import com.wwc.ypt.utils.config.CategoryConfig;
 import com.wwc.ypt.web.response.CategoryResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

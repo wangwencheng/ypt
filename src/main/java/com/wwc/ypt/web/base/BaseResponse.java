@@ -1,4 +1,4 @@
-package com.wwc.ypt.base;
+package com.wwc.ypt.web.base;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;

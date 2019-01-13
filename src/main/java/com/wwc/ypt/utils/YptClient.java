@@ -1,6 +1,6 @@
-package com.wwc.ypt.util;
+package com.wwc.ypt.utils;
 
-import com.wwc.ypt.util.config.AppConfig;
+import com.wwc.ypt.utils.config.AppConfig;
 import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
 import org.springframework.beans.factory.annotation.Autowired;
