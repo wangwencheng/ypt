@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("pay")
 @Slf4j
 public class payNotifyController {
-    @RequestMapping("/alipay/notify/{payWayCode}")
+    @RequestMapping("/notify/{payWayCode}")
      public String alipayNotify(@PathVariable("payWayCode")String payWayCode , HttpServletRequest httpServletRequest , HttpServletResponse httpServletResponse) throws IOException {
         log.info("数据payWayCode是，{}",payWayCode);
         String encoding ="";
