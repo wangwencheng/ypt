@@ -56,6 +56,7 @@ public class UserController {
         return BaseResponse.success(map);
     }
 
+    @IgnoreLogin
     @RequestMapping("modifyPassword")
     public BaseResponse modifyPassword(@RequestBody UserRequest userRequest) {
         userService.modifyPassword(userRequest);
