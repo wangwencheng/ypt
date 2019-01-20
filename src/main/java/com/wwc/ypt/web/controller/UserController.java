@@ -12,9 +12,10 @@ import com.wwc.ypt.web.base.BaseResponse;
 import com.wwc.ypt.web.request.UserRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,7 +25,7 @@ import java.util.Objects;
 
 @Slf4j
 @RequestMapping("user")
-@RestController
+@Controller
 public class UserController {
     @Autowired
     UserService userService;
@@ -39,6 +40,7 @@ public class UserController {
     }
 
     @RequestMapping("login")
+    @ResponseBody
     public BaseResponse login(@RequestBody UserRequest userRequest, HttpSession session) {
         User user = userService.login(userRequest);
         if (Objects.isNull(user)) {

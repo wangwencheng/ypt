@@ -2,10 +2,10 @@ package com.wwc.ypt.service;
 
 import com.wwc.ypt.dao.UserDAO;
 import com.wwc.ypt.entity.User;
+import com.wwc.ypt.utils.CopyUtils;
 import com.wwc.ypt.utils.IpUtils;
 import com.wwc.ypt.web.request.UserRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class UserService {
 
     public void register(UserRequest userRequest, HttpServletRequest request) {
         User user=new User();
-        BeanUtils.copyProperties(userRequest,user);
+        CopyUtils.copyProperties(userRequest,user);
         user.setLastLoginIp(IpUtils.getRemoteIP(request));
         user.setPassword(user.getPassword());
         user.setUserBirthday(new Date());
