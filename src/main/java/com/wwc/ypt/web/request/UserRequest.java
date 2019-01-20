@@ -14,7 +14,7 @@ public class UserRequest {
     private String lat;
     private String lng;
     private String userAvatar;
-    private String userSex;
+    private Byte userSex;
     private String nickName;
     private String lastLoginIp;
     private Date userBirthday;

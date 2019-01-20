@@ -27,7 +27,7 @@ public class User {
     @Column(name = "user_avatar", nullable = false)
     private String userAvatar;
     @Column(name = "user_sex", nullable = false)
-    private String userSex;
+    private Byte userSex;
     @Column(name = "nick_name", nullable = false)
     private String nickName;
     @Column(name = "last_login_ip", nullable = false)

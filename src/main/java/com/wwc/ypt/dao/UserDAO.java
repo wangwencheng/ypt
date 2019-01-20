@@ -27,7 +27,7 @@ public class UserDAO {
     @Transactional(rollbackFor = Exception.class)
     public void modifyAvatar(UserRequest userRequest) {
         String hql = "update User set userAvatar=:userAvatar where userId=:userId";
-        QueryBuilder query = QueryBuilder.create(hql).param("userAvatar", userRequest.getUserAvatar());
+        QueryBuilder query = QueryBuilder.create(hql).param("userAvatar", userRequest.getUserAvatar()).param("userId",userRequest.getUserId());
         jpaAccess.update(query);
     }
 

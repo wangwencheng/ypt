@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -24,6 +25,7 @@ public class UserService {
         user.setLastLoginIp(IpUtils.getRemoteIP(request));
         user.setPassword(user.getPassword());
         user.setUserBirthday(new Date());
+        user.setUserSex(Objects.isNull(userRequest.getUserSex())?1:userRequest.getUserSex());
         userDAO.register(user);
     }
 

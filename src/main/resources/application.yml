@@ -38,8 +38,8 @@ shareCode: ￥IsaIbprkEAZ￥
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/ypt?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
-    #url: jdbc:mysql://47.107.129.113:3306/ypt?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    #url: jdbc:mysql://127.0.0.1:3306/ypt?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://47.107.129.113:3306/ypt?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
@@ -53,8 +53,8 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
   redis:
-    host: 127.0.0.1
-    #host: 47.107.129.113
+    #host: 127.0.0.1
+    host: 47.107.129.113
     port: 6379
     database: 0
     password: 123456
